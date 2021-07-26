@@ -7,6 +7,7 @@ import { db, auth } from './services/firebase';
 import './App.scss';
 
 function App() {
+  const [addingVehicle, toggleAddingVehicle] = useState(false);
   const [vehicles, setVehicle] = useState([]);
 
   useEffect(() => {
@@ -23,7 +24,13 @@ function App() {
     <div className='App'>
       <Header />
       <div className='app-body'>
-        <AddNewVehicle />
+        {!addingVehicle ? (
+          <button className='add-btn' onClick={toggleAddingVehicle}>
+            Add Vehicle
+          </button>
+        ) : (
+          <AddNewVehicle cancelAddingVehicle={toggleAddingVehicle} />
+        )}
         <div>
           {vehicles &&
             vehicles.map((vehicle) => (

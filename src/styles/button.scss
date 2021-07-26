@@ -1,4 +1,6 @@
 @mixin button($bgColor) {
+  padding: 5px 10px;
+  width: 130px;
   color: #fff;
   background-color: $bgColor;
   box-shadow: 1px 1px 4px $bgColor;
