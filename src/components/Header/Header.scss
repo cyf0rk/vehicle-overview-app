@@ -1,0 +1,41 @@
+@import '../../styles/colors';
+@import '../../styles/button';
+
+.header {
+  background-color: $black;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .header__left {
+    flex: 4;
+    padding: 0 15px;
+    text-align: start;
+
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+
+  .header__right {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.1rem;
+
+    input {
+      height: 25px;
+      font-size: inherit;
+    }
+
+    .favourites-btn {
+      @include button($gold);
+      padding: 5px 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+}
