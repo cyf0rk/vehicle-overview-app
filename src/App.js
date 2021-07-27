@@ -1,5 +1,6 @@
 import Header from './components/Header/Header';
 import AddNewVehicle from './components/AddNewVehicle/AddNewVehicle';
+import VehiclesList from './components/VehiclesList/VehiclesList';
 
 import { useEffect, useState } from 'react';
 import { db, auth } from './services/firebase';
@@ -31,14 +32,7 @@ function App() {
         ) : (
           <AddNewVehicle cancelAddingVehicle={toggleAddingVehicle} />
         )}
-        <div>
-          {vehicles &&
-            vehicles.map((vehicle) => (
-              <li>
-                {vehicle.id} - {vehicle.vehicleName}
-              </li>
-            ))}
-        </div>
+        <VehiclesList vehicles={vehicles} />
       </div>
     </div>
   );

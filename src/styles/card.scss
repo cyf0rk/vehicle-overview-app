@@ -1,0 +1,6 @@
+@mixin card($bg-color, $color) {
+  background-color: $bg-color;
+  color: $color;
+  border-radius: 12px;
+  box-shadow: 1px 2px 8px $bg-color;
+}

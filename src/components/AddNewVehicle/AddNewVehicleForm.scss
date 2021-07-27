@@ -1,0 +1,59 @@
+@import '../../styles/colors';
+@import '../../styles/button';
+
+.add-new-form {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  width: 70%;
+  background-color: $dark;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 1px 2px 8px $dark;
+
+  .input {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+
+    .input-field {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 10px 20px;
+      font-size: 1.1rem;
+
+      input {
+        margin-top: 4px;
+        width: 200px;
+        height: 20px;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .actions {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    align-items: flex-end;
+
+    .cancel-btn {
+      @include button($red);
+      margin: 0 10px;
+      height: 22px;
+      width: 100px;
+      padding: 2px 5px;
+      text-decoration: none;
+    }
+
+    .add-btn {
+      all: unset;
+      @include button($brown);
+      font-size: 1rem;
+    }
+  }
+}
