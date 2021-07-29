@@ -2,7 +2,7 @@
 @import '../../styles/button';
 
 .header {
-  background-color: $black;
+  background-color: $dark;
   color: #fff;
   display: flex;
   flex-direction: row;
@@ -29,13 +29,13 @@
     input {
       height: 25px;
       font-size: inherit;
+      border-radius: 2px;
     }
 
     .favourites-btn {
       @include button($gold);
-      padding: 5px 10px;
+      margin: 0 20px;
       text-decoration: none;
-      color: #fff;
     }
   }
 }

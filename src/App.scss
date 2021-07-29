@@ -1,11 +1,21 @@
 @import './styles/colors';
+@import './styles/button';
 
 .App {
   height: 100vh;
+  width: 100%;
   background-color: $white;
   text-align: center;
 }
 
 .app-body {
   padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-btn {
+  all: unset;
+  @include button($brown);
 }
