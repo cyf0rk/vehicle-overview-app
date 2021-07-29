@@ -1,40 +1,77 @@
+import {
+  useAddNewVehicleInfo,
+  useAddNewVehicle,
+} from '../../common/VehiclesContext';
+
 import './AddNewVehicleForm.scss';
 
-const AddNewVehicleForm = ({ cancelAddingVehicle }) => {
+const AddNewVehicleForm = ({ toggleAddingVehicle }) => {
+  const changeHandler = useAddNewVehicleInfo();
+  const addNewVehicleHandler = useAddNewVehicle();
+
   return (
-    <form action='post' className='add-new-form'>
+    <form className='add-new-form' onSubmit={addNewVehicleHandler}>
       <div className='input'>
         <div className='input-field'>
           <label htmlFor=''>Vehicle brand:</label>
-          <input type='text' name='vehicle-name' />
+          <input
+            required
+            type='text'
+            name='vehicleBrand'
+            onChange={changeHandler}
+          />
         </div>
         <div className='input-field'>
           <label htmlFor=''>Vehicle model:</label>
-          <input type='text' name='vehicle-model' />
+          <input
+            required
+            type='text'
+            name='vehicleModel'
+            onChange={changeHandler}
+          />
         </div>
         <div className='input-field'>
           <label htmlFor=''>Vehicle price:</label>
-          <input type='text' name='vehicle-price' />
+          <input
+            required
+            type='text'
+            name='vehiclePrice'
+            onChange={changeHandler}
+          />
         </div>
         <div className='input-field'>
           <label htmlFor=''>Vehicle power:</label>
-          <input type='text' name='vehicle-power' />
+          <input
+            required
+            type='text'
+            name='vehiclePower'
+            onChange={changeHandler}
+          />
         </div>
         <div className='input-field'>
           <label htmlFor=''>Vehicle drive:</label>
-          <input type='text' name='vehicle-drive' />
+          <input
+            required
+            type='text'
+            name='vehicleDrive'
+            onChange={changeHandler}
+          />
         </div>
         <div className='input-field'>
           <label htmlFor=''>Year of manufacture:</label>
-          <input type='text' name='year-of-manufacture' />
+          <input
+            type='text'
+            name='yearOfManufacture'
+            onChange={changeHandler}
+          />
         </div>
         <div className='input-field'>
           <label htmlFor=''>Seating up to:</label>
-          <input type='text' name='seating-up-to' />
+          <input required type='text' name='seating' onChange={changeHandler} />
         </div>
       </div>
       <div className='actions'>
-        <a className='cancel-btn' onClick={() => cancelAddingVehicle(false)}>
+        <a className='cancel-btn' onClick={() => toggleAddingVehicle(false)}>
           Cancel
         </a>
         <button className='add-btn'>Add Vehicle</button>
