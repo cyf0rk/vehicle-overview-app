@@ -7,7 +7,7 @@ import './AddNewVehicle.scss';
 const AddNewVehicle = () => {
   const [addingVehicle, toggleAddingVehicle] = useState(false);
   return (
-    <>
+    <div className='add-new-vehicle'>
       {!addingVehicle ? (
         <button className='add-btn' onClick={toggleAddingVehicle}>
           Add Vehicle
@@ -15,7 +15,7 @@ const AddNewVehicle = () => {
       ) : (
         <AddNewVehicleForm toggleAddingVehicle={toggleAddingVehicle} />
       )}
-    </>
+    </div>
   );
 };
 
