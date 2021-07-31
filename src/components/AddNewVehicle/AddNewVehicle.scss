@@ -1,0 +1,20 @@
+@import '../../styles/button.scss';
+@import '../../styles/colors.scss';
+
+.add-new-vehicle {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  .add-new-vehicle__button {
+    display: flex;
+    width: 100%;
+    padding: 10px 10%;
+    justify-content: flex-end;
+
+    .add-btn {
+      all: unset;
+      @include button($brown);
+    }
+  }
+}
