@@ -43,7 +43,6 @@
     .cancel-btn {
       @include button($red);
       margin: 0 10px;
-      display: block;
       width: 100px;
       padding: 2px 5px;
       text-decoration: none;

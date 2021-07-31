@@ -1,4 +1,5 @@
 @mixin button($bgColor) {
+  display: block;
   padding: 5px 10px;
   width: 130px;
   color: #fff;
