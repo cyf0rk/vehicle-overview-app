@@ -14,26 +14,5 @@
     list-style: none;
     flex-wrap: wrap;
     justify-content: center;
-
-    .vehicles-list__item {
-      @include card($grey, #fff);
-      margin: 10px;
-      padding: 10px;
-      width: 300px;
-      height: 200px;
-      cursor: pointer;
-    }
-  }
-
-  .vehicles-list__paging {
-    font-size: 2rem;
-    text-align: end;
-    padding: 10px 15%;
-
-    a {
-      margin: 0 10px;
-      cursor: pointer;
-      user-select: none;
-    }
   }
 }
