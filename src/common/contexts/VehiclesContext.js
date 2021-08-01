@@ -2,9 +2,9 @@ import { useEffect, useState, createContext, useContext } from 'react';
 import { db } from '../../services/firebase';
 import PagingProvider from './PagingContext';
 
-export const DataContext = createContext(null);
-export const FormInputContext = createContext(null);
-export const CreateDataEntryContext = createContext({});
+const DataContext = createContext(null);
+const FormInputContext = createContext(null);
+const CreateDataEntryContext = createContext({});
 
 export const useData = () => useContext(DataContext);
 export const useFormInput = () => useContext(FormInputContext);
@@ -38,7 +38,7 @@ const VehiclesProvider = ({ children }) => {
     <DataContext.Provider value={vehicles}>
       <FormInputContext.Provider value={changeHandler}>
         <CreateDataEntryContext.Provider value={addNewVehicleHandler}>
-          <PagingProvider vehicles={vehicles}>{children}</PagingProvider>
+          <PagingProvider>{children}</PagingProvider>
         </CreateDataEntryContext.Provider>
       </FormInputContext.Provider>
     </DataContext.Provider>
