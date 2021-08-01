@@ -1,7 +1,7 @@
 import Header from './components/Header/Header';
 import AddNewVehicle from './components/AddNewVehicle/AddNewVehicle';
 import VehiclesList from './components/VehiclesList/VehiclesList';
-import VehiclesProvider from './common/VehiclesContext';
+import VehiclesProvider from './common/contexts/VehiclesContext';
 
 import './App.scss';
 

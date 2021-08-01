@@ -2,7 +2,7 @@ import {
   usePreviousPage,
   useNextPage,
   useCurrentPage,
-} from '../../common/VehiclesContext';
+} from '../../common/contexts/PagingContext';
 
 import './VehiclesListPaging.scss';
 

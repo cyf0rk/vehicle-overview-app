@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useCurrentPageList } from '../../common/VehiclesContext';
+import { useCurrentPageList } from '../../common/contexts/PagingContext';
 import VehicleListItem from './VehicleListItem';
 import VehicleListItemPopup from './VehicleListItemPopup';
 import VehiclesListPaging from '../VehiclesListFunctionality/VehiclesListPaging';
