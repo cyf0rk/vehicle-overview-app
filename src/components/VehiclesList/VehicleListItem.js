@@ -1,9 +1,9 @@
 import './VehicleListItem.scss';
 
-const VehicleListItem = ({ vehicle, togglePopupHandler }) => {
+const VehicleListItem = ({ vehicle, togglePopupHandler, listStyle }) => {
   return (
     <li
-      className='vehicles-list__item'
+      className={'vehicles-list__item list-item-' + listStyle}
       onClick={() => togglePopupHandler(vehicle)}
     >
       <h3>{vehicle.vehicleBrand}</h3>

@@ -6,8 +6,10 @@
   margin: 10px;
   padding: 2px;
   width: 300px;
-  height: 200px;
+  height: 250px;
+  display: flex;
   cursor: pointer;
+  flex-direction: column;
 
   h3 {
     font-size: 1.3rem;
@@ -22,4 +24,15 @@
       padding: 0 10px;
     }
   }
+}
+
+.list-item-grid {
+  flex-direction: column;
+}
+
+.list-item-list {
+  flex-direction: row;
+  width: 100%;
+  height: unset;
+  justify-content: space-around;
 }

@@ -10,9 +10,16 @@
     margin-left: 0;
     padding-left: 0;
     display: flex;
-    flex-direction: row;
     list-style: none;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .list-grid {
+    flex-direction: row;
+  }
+
+  .list-list {
+    flex-direction: column;
   }
 }

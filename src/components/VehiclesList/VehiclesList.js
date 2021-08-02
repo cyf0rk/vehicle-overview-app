@@ -4,6 +4,7 @@ import { useCurrentPageList } from '../../common/contexts/PagingContext';
 import VehicleListItem from './VehicleListItem';
 import VehicleListItemPopup from './VehicleListItemPopup';
 import VehiclesListPaging from '../VehiclesListFunctionality/VehiclesListPaging';
+import VehiclesListSorting from '../VehiclesListFunctionality/VehiclesListSorting';
 
 import './VehiclesList.scss';
 
@@ -12,6 +13,7 @@ const VehiclesList = () => {
 
   const [popupItem, changePopupItem] = useState({});
   const [popup, togglePopup] = useState(false);
+  const [listStyle, changeListStyle] = useState('grid');
 
   const togglePopupHandler = (item) => {
     changePopupItem(item);
@@ -20,13 +22,15 @@ const VehiclesList = () => {
 
   return (
     <div className='vehicles-list'>
-      <ul className='vehicles-list__list'>
+      <VehiclesListSorting changeListStyle={changeListStyle} />
+      <ul className={'vehicles-list__list list-' + listStyle}>
         {currentPageList &&
           currentPageList.map((vehicle) => (
             <VehicleListItem
               key={uuidv4()}
               vehicle={vehicle}
               togglePopupHandler={togglePopupHandler}
+              listStyle={listStyle}
             />
           ))}
       </ul>
