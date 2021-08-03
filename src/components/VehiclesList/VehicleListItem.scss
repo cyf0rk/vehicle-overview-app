@@ -13,11 +13,13 @@
 
   h3 {
     font-size: 1.3rem;
+    margin: unset;
   }
 
   p {
     font-size: 1.1rem;
     font-weight: 500;
+    margin: unset;
 
     span {
       font-weight: normal;
@@ -28,11 +30,13 @@
 
 .list-item-grid {
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .list-item-list {
   flex-direction: row;
   width: 100%;
-  height: unset;
+  height: 40px;
+  line-height: 35px;
   justify-content: space-around;
 }

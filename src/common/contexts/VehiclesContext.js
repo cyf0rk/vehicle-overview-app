@@ -1,6 +1,7 @@
 import { useEffect, useState, createContext, useContext } from 'react';
 import { db } from '../../services/firebase';
 import PagingProvider from './PagingContext';
+import SortingProvider from './SortingContext';
 
 const DataContext = createContext(null);
 const FormInputContext = createContext(null);
@@ -38,7 +39,9 @@ const VehiclesProvider = ({ children }) => {
     <DataContext.Provider value={vehicles}>
       <FormInputContext.Provider value={changeHandler}>
         <CreateDataEntryContext.Provider value={addNewVehicleHandler}>
-          <PagingProvider>{children}</PagingProvider>
+          <SortingProvider>
+            <PagingProvider>{children}</PagingProvider>
+          </SortingProvider>
         </CreateDataEntryContext.Provider>
       </FormInputContext.Provider>
     </DataContext.Provider>

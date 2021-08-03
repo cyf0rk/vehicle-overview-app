@@ -13,7 +13,7 @@ const VehiclesList = () => {
 
   const [popupItem, changePopupItem] = useState({});
   const [popup, togglePopup] = useState(false);
-  const [listStyle, changeListStyle] = useState('grid');
+  const [listStyle, changeListStyle] = useState('list');
 
   const togglePopupHandler = (item) => {
     changePopupItem(item);
@@ -23,7 +23,7 @@ const VehiclesList = () => {
   return (
     <div className='vehicles-list'>
       <VehiclesListSorting changeListStyle={changeListStyle} />
-      <ul className={'vehicles-list__list list-' + listStyle}>
+      <ul className={'vehicles-list__list ul-' + listStyle}>
         {currentPageList &&
           currentPageList.map((vehicle) => (
             <VehicleListItem

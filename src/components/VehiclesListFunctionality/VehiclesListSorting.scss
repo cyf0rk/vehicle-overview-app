@@ -5,14 +5,40 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  margin: 10px 0;
 
-  button {
-    @include button($dark);
-    width: 90px;
-    margin: 5px;
+  .list-grid {
+    display: flex;
+    flex-direction: row;
 
-    i {
-      margin: 0 2px;
+    button {
+      @include button($dark);
+      width: 90px;
+      margin: 0 5px;
+
+      i {
+        margin: 0 2px;
+      }
+    }
+  }
+
+  .sorting-container {
+    display: flex;
+    flex-direction: row;
+    padding: 0 20px;
+
+    p {
+      margin: 0 10px;
+      align-self: center;
+      font-size: 1rem;
+    }
+
+    select {
+      border-radius: 3px;
+      font-size: 0.9rem;
+
+      option {
+      }
     }
   }
 }
