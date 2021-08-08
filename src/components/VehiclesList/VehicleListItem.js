@@ -1,6 +1,12 @@
+import {useFavorites} from '../../common/contexts/FavoritesContext'
+
+import AddToFavorites from '../VehiclesListFunctionality/AddToFavorites';
+
 import './VehicleListItem.scss';
 
 const VehicleListItem = ({ vehicle, togglePopupHandler, listStyle }) => {
+  const {addFavoriteVehicleHandler} = useFavorites();
+
   return (
     <li
       className={'vehicles-list__item list-item-' + listStyle}
@@ -16,6 +22,9 @@ const VehicleListItem = ({ vehicle, togglePopupHandler, listStyle }) => {
       <p>
         Year of manufacture:<span>{vehicle.yearOfManufacture}</span>
       </p>
+      <AddToFavorites 
+        addFavoriteVehicleHandler={() => addFavoriteVehicleHandler(vehicle)}
+      />
     </li>
   );
 };
