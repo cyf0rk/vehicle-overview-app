@@ -1,6 +1,10 @@
+import { useSearchTerm } from '../../common/contexts/PagingContext';
+
 import './Header.scss';
 
 const Header = () => {
+  const { searchHandler } = useSearchTerm();
+
   return (
     <div className='header'>
       <div className='header__left'>
@@ -11,6 +15,7 @@ const Header = () => {
           type='text'
           name='search-vehicle'
           placeholder='Search for vehicle'
+          onChange={searchHandler}
         />
         <a className='favourites-btn' href=''>
           My favourites

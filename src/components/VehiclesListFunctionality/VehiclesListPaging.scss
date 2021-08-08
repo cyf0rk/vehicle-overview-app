@@ -1,0 +1,11 @@
+.vehicles-list__paging {
+  font-size: 2rem;
+  text-align: end;
+  padding: 10px 15%;
+
+  a {
+    margin: 0 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+}

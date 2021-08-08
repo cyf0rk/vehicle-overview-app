@@ -1,56 +1,43 @@
-import { useContext, useState } from 'react';
-import { VehiclesContext } from '../../common/VehiclesContext';
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { useCurrentPageList } from '../../common/contexts/PagingContext';
+import VehicleListItem from './VehicleListItem';
+import VehicleListItemPopup from './VehicleListItemPopup';
+import VehiclesListPaging from '../VehiclesListFunctionality/VehiclesListPaging';
+import VehiclesListSorting from '../VehiclesListFunctionality/VehiclesListSorting';
+
 import './VehiclesList.scss';
 
 const VehiclesList = () => {
-  const vehicles = useContext(VehiclesContext);
-  const [currentPage, updateCurrentPage] = useState(1);
+  const currentPageList = useCurrentPageList();
 
-  const clickHandler = () => {
-    console.log('clicked');
+  const [popupItem, changePopupItem] = useState({});
+  const [popup, togglePopup] = useState(false);
+  const [listStyle, changeListStyle] = useState('list');
+
+  const togglePopupHandler = (item) => {
+    changePopupItem(item);
+    togglePopup(true);
   };
-  const getNumberOfPages = () => Math.ceil(vehicles.length / numberPerPage);
-
-  const nextPageHandler = () => {
-    if (currentPage < numberOfPages) updateCurrentPage(currentPage + 1);
-  };
-
-  const previousPageHandler = () => {
-    currentPage > 1 && updateCurrentPage(currentPage - 1);
-  };
-
-  const numberPerPage = 12;
-  const numberOfPages = getNumberOfPages();
-  const currentPageList = vehicles.slice(
-    (currentPage - 1) * numberPerPage,
-    numberPerPage * currentPage
-  );
 
   return (
     <div className='vehicles-list'>
-      <ul className='vehicles-list__list'>
-        {vehicles &&
+      <VehiclesListSorting changeListStyle={changeListStyle} />
+      <ul className={'vehicles-list__list ul-' + listStyle}>
+        {currentPageList &&
           currentPageList.map((vehicle) => (
-            <li className='vehicles-list__item' onClick={clickHandler}>
-              <h3>{vehicle.vehicleBrand}</h3>
-              <p>{vehicle.vehicleModel}</p>
-              <p>${vehicle.vehiclePrice}</p>
-              {/* <p>{vehicle.vehiclePower}</p>
-            <p>{vehicle.vehicleDrive}</p> */}
-              <p>{vehicle.yearOfManufacture}</p>
-              {/* <p>{vehicle.seating}</p> */}
-            </li>
+            <VehicleListItem
+              key={uuidv4()}
+              vehicle={vehicle}
+              togglePopupHandler={togglePopupHandler}
+              listStyle={listStyle}
+            />
           ))}
       </ul>
-      <div className='vehicles-list__paging'>
-        <a className='previous' onClick={previousPageHandler}>
-          &#8701;
-        </a>
-        <a className='currentPage'>{currentPage}</a>
-        <a className='next' onClick={nextPageHandler}>
-          &#8702;
-        </a>
-      </div>
+      {popup && (
+        <VehicleListItemPopup popupItem={popupItem} togglePopup={togglePopup} />
+      )}
+      <VehiclesListPaging />
     </div>
   );
 };

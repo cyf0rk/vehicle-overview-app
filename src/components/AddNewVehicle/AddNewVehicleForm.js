@@ -1,13 +1,13 @@
 import {
-  useAddNewVehicleInfo,
-  useAddNewVehicle,
-} from '../../common/VehiclesContext';
+  useFormInput,
+  useCreateDataEntry,
+} from '../../common/contexts/VehiclesContext';
 
 import './AddNewVehicleForm.scss';
 
 const AddNewVehicleForm = ({ toggleAddingVehicle }) => {
-  const changeHandler = useAddNewVehicleInfo();
-  const addNewVehicleHandler = useAddNewVehicle();
+  const changeHandler = useFormInput();
+  const addNewVehicleHandler = useCreateDataEntry();
 
   return (
     <form className='add-new-form' onSubmit={addNewVehicleHandler}>
