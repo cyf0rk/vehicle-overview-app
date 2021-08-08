@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div className='header'>
       <div className='header__left'>
-        <h2>Vehicle Overview</h2>
+        {!favoritesPage ? <h2>Vehicle Overview</h2> : <h2>Favorite Vehicles Overview</h2>}
       </div>
       <div className='header__right'>
         <input

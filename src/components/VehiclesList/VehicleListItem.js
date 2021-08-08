@@ -1,11 +1,13 @@
 import {useFavorites} from '../../common/contexts/FavoritesContext'
+import { usePopupModal } from '../../common/contexts/PopupModalContext';
 
 import AddToFavorites from '../VehiclesListFunctionality/AddToFavorites';
 
 import './VehicleListItem.scss';
 
-const VehicleListItem = ({ vehicle, togglePopupHandler, listStyle }) => {
-  const {addFavoriteVehicleHandler} = useFavorites();
+const VehicleListItem = ({ vehicle }) => {
+  const { addFavoriteVehicleHandler } = useFavorites();
+  const { listStyle, togglePopupHandler } = usePopupModal();
 
   return (
     <li

@@ -12,12 +12,10 @@ const FavoritesProvider = ({children}) => {
         addFavoriteVehicle([...favoriteVehicles, vehicle]);
     }
 
-    useEffect(() => {
-        console.log(favoriteVehicles);
-    }, [favoriteVehicles])
-
     return (
-        <FavoritesContext.Provider value={{ favoriteVehicles, addFavoriteVehicleHandler, favoritesPage, toggleFavoritesPage }}>{children}</FavoritesContext.Provider>
+        <FavoritesContext.Provider value={{ favoriteVehicles, addFavoriteVehicleHandler, favoritesPage, toggleFavoritesPage }}>
+            {children}
+        </FavoritesContext.Provider>
     )
 }
 

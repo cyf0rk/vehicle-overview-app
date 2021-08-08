@@ -2,9 +2,15 @@
 @import '../../styles/colors.scss';
 
 .add-to-fav {
+    position: absolute;
+    left: 7%;
+    top: 7%;
     display: inline-block;
-}
 
-.add-fav-button {
-    // @include button($gold);
+    .add-fav-button {
+        font-size: 1.8rem;
+        font-weight: bolder;
+        color: $gold;
+        cursor: pointer;
+    }
 }

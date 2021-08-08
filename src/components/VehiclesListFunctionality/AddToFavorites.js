@@ -3,7 +3,8 @@ import './AddToFavorites.scss';
 const AddToFavorites = ({addFavoriteVehicleHandler}) => {
     return (
         <div className="add-to-fav">
-            <button className="add-fav-button" onClick={addFavoriteVehicleHandler}>Add to favorties</button>
+            <a className="add-fav-button" onClick={addFavoriteVehicleHandler}>&#9734;</a>
+            {/* &#9733; */}
         </div>
     )
 }
