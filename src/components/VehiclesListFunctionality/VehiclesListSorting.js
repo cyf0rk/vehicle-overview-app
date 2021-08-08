@@ -19,10 +19,10 @@ const VehiclesListSorting = ({ changeListStyle }) => {
       <div className='sorting-container'>
         <p>Sort by: </p>
         <select onChange={(e) => changeSorting(e.target.value)}>
-          <option value='name'>brand name (A-Z)</option>
-          <option value='yom'>year of manufacture (newest)</option>
-          <option value='price-up'>price (from lowest)</option>
-          <option value='price-down'>price (from highest)</option>
+          <option value='name' onChange={(e) => changeSorting(e.target.value)}>brand name (A-Z)</option>
+          <option value='yom' onChange={(e) => changeSorting(e.target.value)}>year of manufacture (newest)</option>
+          <option value='price-up' onChange={(e) => changeSorting(e.target.value)}>price (from lowest)</option>
+          <option value='price-down' onChange={(e) => changeSorting(e.target.value)}>price (from highest)</option>
         </select>
       </div>
     </div>

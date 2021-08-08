@@ -16,7 +16,7 @@ export const useSearchTerm = () => useContext(SearchTermContext);
 
 const PagingProvider = ({ children }) => {
   const vehicles = useData();
-  const { sortByName } = useSorting();
+  const { sortList } = useSorting();
 
   const [currentPage, updateCurrentPage] = useState(1);
   const [searchedTerm, changeSearchedTerm] = useState('');
@@ -42,9 +42,11 @@ const PagingProvider = ({ children }) => {
   const getNumberOfPages = () =>
     Math.ceil(searchedDataHandler().length / numberPerPage);
 
+
+  const listSortedByName = sortList(searchedDataHandler());
   const numberPerPage = 8;
   const numberOfPages = getNumberOfPages();
-  const currentPageList = sortByName(searchedDataHandler()).slice(
+  const currentPageList = listSortedByName.slice(
     (currentPage - 1) * numberPerPage,
     numberPerPage * currentPage
   );
