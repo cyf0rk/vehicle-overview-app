@@ -22,6 +22,10 @@
     height: 65%;
     width: 40%;
 
+    @media screen and (max-width: 860px) {
+      width: 70%;
+    }
+
     .popup-item__card-title {
       position: relative;
       display: flex;
