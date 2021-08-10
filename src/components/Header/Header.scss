@@ -26,6 +26,10 @@
     justify-content: space-evenly;
     font-size: 1.1rem;
 
+    @media screen and (max-width: 631px) {
+      display: none;
+    }
+
     input {
       font-size: inherit;
       border-radius: 2px;

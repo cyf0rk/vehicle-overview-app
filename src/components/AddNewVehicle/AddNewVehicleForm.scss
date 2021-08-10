@@ -12,11 +12,28 @@
   border-radius: 12px;
   box-shadow: 1px 2px 8px $dark;
 
+  
+  @media screen and (max-width: 450px) {
+    width: 90%;
+  }
+
   .input {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 10px;
+
+    @media screen and (min-width: 531px) and (max-width: 860px) {
+      padding: 10px 5px 30px 5px;
+    }
+
+    @media screen and (min-width: 451px) and (max-width: 530px) {
+      padding: 10px 5px 60px 5px;
+    }
+
+    @media screen and (max-width: 450px) {
+      padding: 0 0 60px 0;
+    }
 
     .input-field {
       display: flex;
@@ -24,6 +41,10 @@
       align-items: flex-start;
       margin: 10px 20px;
       font-size: 1.1rem;
+
+      @media screen and (max-width: 450px) {
+        margin: 5px 0;
+      }
 
       input {
         margin-top: 4px;
@@ -39,6 +60,12 @@
     bottom: 20px;
     display: flex;
     align-items: flex-end;
+    flex-direction: row;
+
+    @media screen and (max-width: 530px) {
+      flex-direction: column;
+      
+    }
 
     .cancel-btn {
       @include button($red);
@@ -46,6 +73,10 @@
       width: 100px;
       padding: 2px 5px;
       text-decoration: none;
+
+      @media screen and (max-width: 530px) {
+        margin: 7px 0;
+      }
     }
 
     .add-btn {

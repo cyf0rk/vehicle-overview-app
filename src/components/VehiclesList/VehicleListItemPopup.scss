@@ -8,20 +8,26 @@
   right: 0;
   bottom: 0;
   display: flex;
-  pointer-events: all;
   background-color: rgba(0, 0, 0, 0.5);
   align-items: center;
   justify-content: center;
   color: #fff;
 
   .popup-item__card {
-    @include card($gold, $dark);
+    @include card($grey, $dark);
+    z-index: 1;
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 65%;
     width: 40%;
 
+    @media screen and (max-width: 860px) {
+      width: 70%;
+    }
+
     .popup-item__card-title {
+      position: relative;
       display: flex;
       flex: 1;
       border-radius: 12px 12px 0 0;
@@ -29,6 +35,14 @@
       align-items: center;
       justify-content: center;
       font-size: 1.3rem;
+
+      .close-button {
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        font-size: 1.7rem;
+        cursor: pointer;
+      }
     }
 
     .popup-item__card-info {

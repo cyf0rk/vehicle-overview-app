@@ -1,6 +1,7 @@
 import { useState, createContext, useContext } from 'react';
 import { useData } from './VehiclesContext';
 import { useSorting } from './SortingContext';
+import { useFavorites } from './FavoritesContext'
 
 const CurrentPageListContext = createContext({});
 const CurrentPageContext = createContext(1);
@@ -16,10 +17,13 @@ export const useSearchTerm = () => useContext(SearchTermContext);
 
 const PagingProvider = ({ children }) => {
   const vehicles = useData();
-  const { sortList } = useSorting();
+  const {sortList} = useSorting();
+  const {favoriteVehicles, favoritesPage} = useFavorites();
 
   const [currentPage, updateCurrentPage] = useState(1);
   const [searchedTerm, changeSearchedTerm] = useState('');
+
+  const vehiclesList = favoritesPage ? favoriteVehicles : vehicles;
 
   const nextPageHandler = () => {
     if (currentPage < numberOfPages) updateCurrentPage(currentPage + 1);
@@ -30,7 +34,7 @@ const PagingProvider = ({ children }) => {
   };
 
   const searchedDataHandler = () => {
-    return vehicles.filter(
+    return vehiclesList.filter(
       (vehicle) =>
         vehicle.vehicleBrand
           .toLowerCase()

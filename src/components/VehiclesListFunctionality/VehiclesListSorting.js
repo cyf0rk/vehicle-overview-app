@@ -1,8 +1,9 @@
 import { useSorting } from '../../common/contexts/SortingContext';
+
 import './VehiclesListSorting.scss';
 
-const VehiclesListSorting = ({ changeListStyle }) => {
-  const { changeSorting } = useSorting();
+const VehiclesListSorting = () => {
+  const { changeListStyle, changeSorting } = useSorting();
 
   return (
     <div className='sorting'>

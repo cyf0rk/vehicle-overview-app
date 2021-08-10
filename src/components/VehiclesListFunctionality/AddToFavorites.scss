@@ -1,0 +1,21 @@
+@import '../../styles/button.scss';
+@import '../../styles/colors.scss';
+
+.add-to-fav {
+    position: absolute;
+    left: 7%;
+    top: 7%;
+    display: inline-block;
+
+    @media screen and (max-width: 1160px) {
+        left: 4%;
+        top: 6%;
+    }
+
+    .add-fav-button {
+        font-size: 1.8rem;
+        font-weight: bolder;
+        color: $gold;
+        cursor: pointer;
+    }
+}

@@ -1,16 +1,27 @@
+import { useFavorites } from '../../common/contexts/FavoritesContext';
+import { usePopupModal } from '../../common/contexts/PopupModalContext';
+
+import AddToFavorites from '../VehiclesListFunctionality/AddToFavorites';
+
 import './VehicleListItemPopup.scss';
 
-const VehicleListItemPopup = ({ popupItem, togglePopup }) => {
+const VehicleListItemPopup = () => {
+  const { toggleFavoriteHandler } = useFavorites();
+  const { popupRef, popupItem, closePopup, togglePopup } = usePopupModal();
+
   return (
     <div
+      ref={popupRef}
       className='popup-item'
-      onClick={() => {
-        togglePopup(false);
-      }}
+      onClick={closePopup}
     >
       <div className='popup-item__card'>
         <div className='popup-item__card-title'>
+          <AddToFavorites 
+            toggleFavoriteHandler={() => toggleFavoriteHandler(popupItem)}
+          />
           <h2>{popupItem.vehicleBrand}</h2>
+          <a className="close-button" onClick={() => togglePopup(false)}>&#120;</a>
         </div>
         <div className='popup-item__card-info'>
           <p>

@@ -1,14 +1,16 @@
 import { useSearchTerm } from '../../common/contexts/PagingContext';
+import { useFavorites } from '../../common/contexts/FavoritesContext';
 
 import './Header.scss';
 
 const Header = () => {
   const { searchHandler } = useSearchTerm();
+  const { favoritesPage, toggleFavoritesPage } = useFavorites();
 
   return (
     <div className='header'>
       <div className='header__left'>
-        <h2>Vehicle Overview</h2>
+        {!favoritesPage ? <h2>Vehicle Overview</h2> : <h2>Favorite Vehicles Overview</h2>}
       </div>
       <div className='header__right'>
         <input
@@ -17,9 +19,15 @@ const Header = () => {
           placeholder='Search for vehicle'
           onChange={searchHandler}
         />
-        <a className='favourites-btn' href=''>
-          My favourites
-        </a>
+        {!favoritesPage ? (
+          <a className='favourites-btn' onClick={() => toggleFavoritesPage(true)}>
+            My favourites
+          </a>
+        ): (
+          <a className='favourites-btn' onClick={() => toggleFavoritesPage(false)}>
+            All vehicles
+          </a>
+        )}
       </div>
     </div>
   );
