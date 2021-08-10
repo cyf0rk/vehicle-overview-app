@@ -1,13 +1,15 @@
 import {useFavorites} from '../../common/contexts/FavoritesContext'
 import { usePopupModal } from '../../common/contexts/PopupModalContext';
+import { useSorting } from '../../common/contexts/SortingContext';
 
 import AddToFavorites from '../VehiclesListFunctionality/AddToFavorites';
 
 import './VehicleListItem.scss';
 
 const VehicleListItem = ({ vehicle }) => {
-  const { addFavoriteVehicleHandler } = useFavorites();
-  const { listStyle, togglePopupHandler } = usePopupModal();
+  const { toggleFavoriteHandler } = useFavorites();
+  const { togglePopupHandler } = usePopupModal();
+  const { listStyle } = useSorting();
 
   return (
     <li
@@ -25,7 +27,7 @@ const VehicleListItem = ({ vehicle }) => {
         Year of manufacture:<span>{vehicle.yearOfManufacture}</span>
       </p>
       <AddToFavorites 
-        addFavoriteVehicleHandler={() => addFavoriteVehicleHandler(vehicle)}
+        toggleFavoriteHandler={() => toggleFavoriteHandler(vehicle)}
       />
     </li>
   );

@@ -8,12 +8,18 @@ const FavoritesProvider = ({children}) => {
     const [favoriteVehicles, addFavoriteVehicle] = useState([]);
     const [favoritesPage, toggleFavoritesPage] = useState(false);
 
-    const addFavoriteVehicleHandler = (vehicle) => {
-        addFavoriteVehicle([...favoriteVehicles, vehicle]);
+    const toggleFavoriteHandler = (vehicle) => {
+        const checkFavoriteVehicle = favoriteVehicles.some(favVehicle => favVehicle.vehicleModel === vehicle.vehicleModel)
+
+        if (!checkFavoriteVehicle)
+            addFavoriteVehicle([...favoriteVehicles, vehicle]);
+        else {
+            addFavoriteVehicle(favoriteVehicles.filter(favVehicle => favVehicle.vehicleModel !== vehicle.vehicleModel))
+        }
     }
 
     return (
-        <FavoritesContext.Provider value={{ favoriteVehicles, addFavoriteVehicleHandler, favoritesPage, toggleFavoritesPage }}>
+        <FavoritesContext.Provider value={{ favoriteVehicles, toggleFavoriteHandler, favoritesPage, toggleFavoritesPage }}>
             {children}
         </FavoritesContext.Provider>
     )

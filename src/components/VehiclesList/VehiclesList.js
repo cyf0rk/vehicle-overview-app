@@ -8,10 +8,12 @@ import VehiclesListPaging from '../VehiclesListFunctionality/VehiclesListPaging'
 import VehiclesListSorting from '../VehiclesListFunctionality/VehiclesListSorting';
 
 import './VehiclesList.scss';
+import { useSorting } from '../../common/contexts/SortingContext';
 
 const VehiclesList = () => {
   const currentPageList = useCurrentPageList();
-  const { listStyle, popup } = usePopupModal();
+  const { popup } = usePopupModal();
+  const { listStyle } = useSorting();
 
   return (
     <div className='vehicles-list'>

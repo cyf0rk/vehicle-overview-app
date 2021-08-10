@@ -6,7 +6,7 @@ import AddToFavorites from '../VehiclesListFunctionality/AddToFavorites';
 import './VehicleListItemPopup.scss';
 
 const VehicleListItemPopup = () => {
-  const { addFavoriteVehicleHandler } = useFavorites();
+  const { toggleFavoriteHandler } = useFavorites();
   const { popupRef, popupItem, closePopup, togglePopup } = usePopupModal();
 
   return (
@@ -18,7 +18,7 @@ const VehicleListItemPopup = () => {
       <div className='popup-item__card'>
         <div className='popup-item__card-title'>
           <AddToFavorites 
-            addFavoriteVehicleHandler={() => addFavoriteVehicleHandler(popupItem)}
+            toggleFavoriteHandler={() => toggleFavoriteHandler(popupItem)}
           />
           <h2>{popupItem.vehicleBrand}</h2>
           <a className="close-button" onClick={() => togglePopup(false)}>&#120;</a>

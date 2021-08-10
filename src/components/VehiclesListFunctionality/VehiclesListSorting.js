@@ -1,11 +1,9 @@
 import { useSorting } from '../../common/contexts/SortingContext';
-import { usePopupModal } from '../../common/contexts/PopupModalContext';
 
 import './VehiclesListSorting.scss';
 
 const VehiclesListSorting = () => {
-  const { changeSorting } = useSorting();
-  const { changeListStyle } = usePopupModal();
+  const { changeListStyle, changeSorting } = useSorting();
 
   return (
     <div className='sorting'>

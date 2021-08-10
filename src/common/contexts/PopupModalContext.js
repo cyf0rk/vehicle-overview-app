@@ -9,7 +9,6 @@ const PopupModalProvider = ({children}) => {
 
     const [popupItem, changePopupItem] = useState({});
     const [popup, togglePopup] = useState(false);
-    const [listStyle, changeListStyle] = useState('list');
 
     const togglePopupHandler = (item) => {
         changePopupItem(item);
@@ -21,7 +20,7 @@ const PopupModalProvider = ({children}) => {
     }
 
     return (
-        <PopupModalContext.Provider value={{ popupRef, popupItem, listStyle, changeListStyle, popup, closePopup, togglePopup, togglePopupHandler}}>
+        <PopupModalContext.Provider value={{ popupRef, popupItem, popup, closePopup, togglePopup, togglePopupHandler}}>
             {children}
         </PopupModalContext.Provider>
     )
