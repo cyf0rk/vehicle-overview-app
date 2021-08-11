@@ -6,6 +6,11 @@
     left: 7%;
     top: 7%;
     display: inline-block;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    box-shadow: 1px 1px 4px rgba($color: #000000, $alpha: 0.4);
+    background-color: $white;
 
     @media screen and (max-width: 1160px) {
         left: 4%;

@@ -1,34 +1,29 @@
-import { useSearchTerm } from '../../common/contexts/PagingContext';
 import { useFavorites } from '../../common/contexts/FavoritesContext';
+import { useMenuModal } from '../../common/contexts/PopupModalContext';
+
+import HeaderFunctionality from './HeaderFunctionality';
 
 import './Header.scss';
+import MenuModal from './MenuModal';
+import { useWindowDimensions } from '../../common/hooks/useWindowDimensions';
+import HamburgerButton from './HamburgerButton';
 
 const Header = () => {
-  const { searchHandler } = useSearchTerm();
-  const { favoritesPage, toggleFavoritesPage } = useFavorites();
+  const { favoritesPage } = useFavorites();
+  const { width } = useWindowDimensions();
+  const { menuModal, toggleMenuModal } = useMenuModal();
 
   return (
     <div className='header'>
-      <div className='header__left'>
+      <div className='header__title'>
         {!favoritesPage ? <h2>Vehicle Overview</h2> : <h2>Favorite Vehicles Overview</h2>}
       </div>
-      <div className='header__right'>
-        <input
-          type='text'
-          name='search-vehicle'
-          placeholder='Search for vehicle'
-          onChange={searchHandler}
-        />
-        {!favoritesPage ? (
-          <a className='favourites-btn' onClick={() => toggleFavoritesPage(true)}>
-            My favourites
-          </a>
-        ): (
-          <a className='favourites-btn' onClick={() => toggleFavoritesPage(false)}>
-            All vehicles
-          </a>
-        )}
-      </div>
+      {width > 631 ?  
+        <HeaderFunctionality />
+        : 
+        <HamburgerButton toggleMenuModal={toggleMenuModal} menuModal={menuModal} />
+      }
+      {menuModal && <MenuModal toggleMenuModal={toggleMenuModal} />}
     </div>
   );
 };
