@@ -1,0 +1,35 @@
+@import '../../styles/colors.scss';
+
+.hamburger_menu {
+    flex: 1;
+    font-size: 1.6rem;
+    margin: auto 0;
+    z-index: 11;
+
+    span {
+        display: block;
+        margin: 6px 0;
+        background-color: $white;
+        width: 40px;
+        height: 4px;
+        transition: 0.3s;
+    }
+}
+
+.open {
+    span {
+        background-color: $dark;
+    }
+
+    span:first-child {
+        transform: translate(0, 10px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+        opacity: 0;
+    }
+
+    span:last-child {
+        transform: translate(0, -10px) rotate(-45deg);
+    }
+}

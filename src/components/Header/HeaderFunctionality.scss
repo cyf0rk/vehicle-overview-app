@@ -1,0 +1,43 @@
+@import '../../styles/colors';
+@import '../../styles/button';
+
+.menu__items {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.1rem;
+
+    @media screen and (max-width: 631px) {
+      position: relative;
+      display: flex;
+      flex-direction: column-reverse;
+      height: 25%;
+      width: 60%;
+      justify-content: space-around;
+      align-items: center;
+
+
+      .favorites-btn {
+        margin-bottom: 30px;
+        font-size: 1.3rem;
+        width: 180px;
+      }
+
+      input {
+        height: 35px;
+      }
+    }
+
+    input {
+      font-size: inherit;
+      border-radius: 2px;
+    }
+
+    .favorites-btn {
+      @include button($gold);
+      margin: 0 20px;
+      text-decoration: none;
+    }
+}

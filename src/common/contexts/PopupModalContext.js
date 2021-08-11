@@ -1,14 +1,17 @@
 import { createContext, useContext, useRef, useState } from "react"
 
-const PopupModalContext = createContext(false) 
+const PopupModalContext = createContext(false);
+const MenuModalContext = createContext(false);
 
-export const usePopupModal = () => useContext(PopupModalContext)
+export const usePopupModal = () => useContext(PopupModalContext);
+export const useMenuModal = () => useContext(MenuModalContext);
 
 const PopupModalProvider = ({children}) => {
     const popupRef = useRef();
 
     const [popupItem, changePopupItem] = useState({});
     const [popup, togglePopup] = useState(false);
+    const [menuModal, toggleMenuModal] = useState(false);
 
     const togglePopupHandler = (item) => {
         changePopupItem(item);
@@ -21,9 +24,11 @@ const PopupModalProvider = ({children}) => {
 
     return (
         <PopupModalContext.Provider value={{ popupRef, popupItem, popup, closePopup, togglePopup, togglePopupHandler}}>
-            {children}
+            <MenuModalContext.Provider value={{ menuModal, toggleMenuModal }}>
+                {children}
+            </MenuModalContext.Provider>
         </PopupModalContext.Provider>
     )
 }
 
-export default PopupModalProvider 
+export default PopupModalProvider;

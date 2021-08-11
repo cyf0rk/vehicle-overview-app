@@ -2,43 +2,28 @@
 @import '../../styles/button';
 
 .header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: $dark;
   color: #fff;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  .header__left {
+  @media screen and (max-width: 631px) {
+    z-index: 10;
+    position: fixed;
+  }
+  
+  .header__title {
     flex: 4;
     padding: 0 15px;
     text-align: start;
 
     h2 {
       font-size: 1.4rem;
-    }
-  }
-
-  .header__right {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    align-items: center;
-    justify-content: space-evenly;
-    font-size: 1.1rem;
-
-    @media screen and (max-width: 631px) {
-      display: none;
-    }
-
-    input {
-      font-size: inherit;
-      border-radius: 2px;
-    }
-
-    .favourites-btn {
-      @include button($gold);
-      margin: 0 20px;
-      text-decoration: none;
     }
   }
 }

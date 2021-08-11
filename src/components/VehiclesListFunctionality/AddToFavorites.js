@@ -9,4 +9,4 @@ const AddToFavorites = ({toggleFavoriteHandler}) => {
     )
 }
 
-export default AddToFavorites
+export default AddToFavorites;
