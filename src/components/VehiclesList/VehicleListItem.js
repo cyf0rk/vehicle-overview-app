@@ -1,19 +1,19 @@
-import {useFavorites} from '../../common/contexts/FavoritesContext'
-import { usePopupModal } from '../../common/contexts/PopupModalContext';
-import { useSorting } from '../../common/contexts/SortingContext';
+import { useFavoriteVehicles } from "../../common/contexts/FavoritesContext";
+import { usePopupModal } from "../../common/contexts/PopupModalContext";
+import { useSortingStyle } from "../../common/contexts/SortingContext";
 
-import AddToFavorites from '../VehiclesListFunctionality/AddToFavorites';
+import AddToFavorites from "../VehiclesListFunctionality/AddToFavorites";
 
-import './VehicleListItem.scss';
+import "./VehicleListItem.scss";
 
 const VehicleListItem = ({ vehicle }) => {
-  const { toggleFavoriteHandler } = useFavorites();
+  const { toggleFavoriteHandler } = useFavoriteVehicles();
   const { togglePopupHandler } = usePopupModal();
-  const { listStyle } = useSorting();
+  const { listStyle } = useSortingStyle();
 
   return (
     <li
-      className={'vehicles-list__item list-item-' + listStyle}
+      className={"vehicles-list__item list-item-" + listStyle}
       onClick={() => togglePopupHandler(vehicle)}
     >
       <h3>{vehicle.vehicleBrand}</h3>
@@ -26,8 +26,8 @@ const VehicleListItem = ({ vehicle }) => {
       <p>
         Year of manufacture:<span>{vehicle.yearOfManufacture}</span>
       </p>
-      <AddToFavorites 
-        toggleFavoriteHandler={() => toggleFavoriteHandler(vehicle)}
+      <AddToFavorites
+        toggleFavoriteHandler={(e) => toggleFavoriteHandler(e, vehicle)}
       />
     </li>
   );

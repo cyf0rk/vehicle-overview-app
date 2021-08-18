@@ -1,6 +1,5 @@
 import {
-  usePreviousPage,
-  useNextPage,
+  useNavigatePage,
   useCurrentPage,
 } from '../../common/contexts/PagingContext';
 
@@ -8,8 +7,7 @@ import './VehiclesListPaging.scss';
 
 const VehiclesListPaging = () => {
   const currentPage = useCurrentPage();
-  const previousPageHandler = usePreviousPage();
-  const nextPageHandler = useNextPage();
+  const { nextPageHandler, previousPageHandler } = useNavigatePage();
 
   return (
     <div className='vehicles-list__paging'>

@@ -6,6 +6,7 @@ import './AddNewVehicle.scss';
 
 const AddNewVehicle = () => {
   const [addingVehicle, toggleAddingVehicle] = useState(false);
+  
   return (
     <div className='add-new-vehicle'>
       {!addingVehicle ? (
