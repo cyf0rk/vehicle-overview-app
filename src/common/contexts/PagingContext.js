@@ -1,27 +1,26 @@
-import { useState, createContext, useContext } from 'react';
-import { useData } from './VehiclesContext';
-import { useSorting } from './SortingContext';
-import { useFavorites } from './FavoritesContext'
+import { useState, createContext, useContext } from "react";
+import { useData } from "./VehiclesContext";
+import { useSorting } from "./SortingContext";
+import { useFavorites, useFavoriteVehicles } from "./FavoritesContext";
 
 const CurrentPageListContext = createContext({});
 const CurrentPageContext = createContext(1);
-const NextPageContext = createContext(null);
-const PreviousPageContext = createContext(null);
-const SearchTermContext = createContext('');
+const NavigatePageContext = createContext(null);
+const SearchTermContext = createContext("");
 
 export const useCurrentPageList = () => useContext(CurrentPageListContext);
 export const useCurrentPage = () => useContext(CurrentPageContext);
-export const useNextPage = () => useContext(NextPageContext);
-export const usePreviousPage = () => useContext(PreviousPageContext);
+export const useNavigatePage = () => useContext(NavigatePageContext);
 export const useSearchTerm = () => useContext(SearchTermContext);
 
 const PagingProvider = ({ children }) => {
   const vehicles = useData();
-  const {sortList} = useSorting();
-  const {favoriteVehicles, favoritesPage} = useFavorites();
+  const { sortList } = useSorting();
+  const { favoritesPage } = useFavorites();
+  const { favoriteVehicles } = useFavoriteVehicles();
 
   const [currentPage, updateCurrentPage] = useState(1);
-  const [searchedTerm, changeSearchedTerm] = useState('');
+  const [searchedTerm, changeSearchedTerm] = useState("");
 
   const vehiclesList = favoritesPage ? favoriteVehicles : vehicles;
 
@@ -46,7 +45,6 @@ const PagingProvider = ({ children }) => {
   const getNumberOfPages = () =>
     Math.ceil(searchedDataHandler().length / numberPerPage);
 
-
   const listSortedByName = sortList(searchedDataHandler());
   const numberPerPage = 8;
   const numberOfPages = getNumberOfPages();
@@ -63,11 +61,11 @@ const PagingProvider = ({ children }) => {
     <CurrentPageListContext.Provider value={currentPageList}>
       <CurrentPageContext.Provider value={currentPage}>
         <SearchTermContext.Provider value={{ searchedTerm, searchHandler }}>
-          <NextPageContext.Provider value={nextPageHandler}>
-            <PreviousPageContext.Provider value={previousPageHandler}>
-              {children}
-            </PreviousPageContext.Provider>
-          </NextPageContext.Provider>
+          <NavigatePageContext.Provider
+            value={{nextPageHandler, previousPageHandler}}
+          >
+            {children}
+          </NavigatePageContext.Provider>
         </SearchTermContext.Provider>
       </CurrentPageContext.Provider>
     </CurrentPageListContext.Provider>

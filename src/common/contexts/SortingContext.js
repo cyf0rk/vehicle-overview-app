@@ -2,8 +2,10 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import {useWindowDimensions} from '../hooks/useWindowDimensions';
 
 const SortingContext = createContext('');
+const SortingStyleContext = createContext('');
 
 export const useSorting = () => useContext(SortingContext);
+export const useSortingStyle = () => useContext(SortingStyleContext);
 
 const SortingProvider = ({ children }) => {
   const [sorting, changeSorting] = useState('name');
@@ -13,7 +15,7 @@ const SortingProvider = ({ children }) => {
   useEffect(() => {
     width < 1160 && changeListStyle('grid');
   },[width])
-  
+
   const sortList = (list) => {
     switch (sorting) {
       case 'yom':
@@ -45,7 +47,7 @@ const SortingProvider = ({ children }) => {
 
   const sortByYear = (list) => {
     return list.sort((a, b) => {
-      const yearA = a.yearOfManufacture; 
+      const yearA = a.yearOfManufacture;
       const yearB = b.yearOfManufacture;
 
       return checkSorting(yearB, yearA);
@@ -72,8 +74,10 @@ const SortingProvider = ({ children }) => {
   }
 
   return (
-    <SortingContext.Provider value={{ changeSorting, sortList, listStyle, changeListStyle }}>
-      {children}
+    <SortingContext.Provider value={{ changeSorting, sortList }}>
+        <SortingStyleContext.Provider value={{ listStyle, changeListStyle }}>
+            {children}
+        </SortingStyleContext.Provider>
     </SortingContext.Provider>
   );
 };

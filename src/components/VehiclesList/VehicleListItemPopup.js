@@ -1,4 +1,4 @@
-import { useFavorites } from '../../common/contexts/FavoritesContext';
+import { useFavoriteVehicles } from '../../common/contexts/FavoritesContext';
 import { usePopupModal } from '../../common/contexts/PopupModalContext';
 
 import AddToFavorites from '../VehiclesListFunctionality/AddToFavorites';
@@ -6,7 +6,7 @@ import AddToFavorites from '../VehiclesListFunctionality/AddToFavorites';
 import './VehicleListItemPopup.scss';
 
 const VehicleListItemPopup = () => {
-  const { toggleFavoriteHandler } = useFavorites();
+  const { toggleFavoriteHandler } = useFavoriteVehicles();
   const { popupRef, popupItem, closePopup, togglePopup } = usePopupModal();
 
   return (
@@ -17,7 +17,7 @@ const VehicleListItemPopup = () => {
     >
       <div className='popup-item__card'>
         <div className='popup-item__card-title'>
-          <AddToFavorites 
+          <AddToFavorites
             toggleFavoriteHandler={() => toggleFavoriteHandler(popupItem)}
           />
           <h2>{popupItem.vehicleBrand}</h2>
