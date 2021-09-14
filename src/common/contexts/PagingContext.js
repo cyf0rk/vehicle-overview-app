@@ -1,7 +1,9 @@
+import React from 'react';
 import { useState, createContext, useContext } from "react";
 import { useData } from "./VehiclesContext";
 import { useSorting } from "./SortingContext";
 import { useFavorites, useFavoriteVehicles } from "./FavoritesContext";
+import PropTypes from 'prop-types';
 
 const CurrentPageListContext = createContext({});
 const CurrentPageContext = createContext(1);
@@ -71,5 +73,9 @@ const PagingProvider = ({ children }) => {
     </CurrentPageListContext.Provider>
   );
 };
+
+PagingProvider.propTypes = {
+  nodeProp: PropTypes.node.isRequired
+}
 
 export default PagingProvider;

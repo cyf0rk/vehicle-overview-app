@@ -1,5 +1,7 @@
+import React from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
 import {useWindowDimensions} from '../hooks/useWindowDimensions';
+import PropTypes from 'prop-types';
 
 const SortingContext = createContext('');
 const SortingStyleContext = createContext('');
@@ -81,5 +83,9 @@ const SortingProvider = ({ children }) => {
     </SortingContext.Provider>
   );
 };
+
+SortingProvider.propTypes = {
+  nodeProp: PropTypes.node.isRequired
+}
 
 export default SortingProvider;

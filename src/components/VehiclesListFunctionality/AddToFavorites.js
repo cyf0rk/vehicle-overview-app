@@ -1,3 +1,4 @@
+import React from 'react';
 import './AddToFavorites.scss';
 
 const AddToFavorites = ({toggleFavoriteHandler}) => {

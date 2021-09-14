@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSorting, useSortingStyle } from "../../common/contexts/SortingContext";
 
 import "./VehiclesListSorting.scss";

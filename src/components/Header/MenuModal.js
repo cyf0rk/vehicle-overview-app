@@ -1,3 +1,4 @@
+import React from 'react';
 import HeaderFunctionality from './HeaderFunctionality';
 
 import './MenuModal.scss';

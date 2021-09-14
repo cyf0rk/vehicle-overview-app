@@ -1,3 +1,4 @@
+import React from 'react';
 import { useFavoriteVehicles } from "../../common/contexts/FavoritesContext";
 import { usePopupModal } from "../../common/contexts/PopupModalContext";
 import { useSortingStyle } from "../../common/contexts/SortingContext";

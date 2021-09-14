@@ -1,4 +1,6 @@
+import React from 'react';
 import { createContext, useContext, useState } from "react";
+import PropTypes from 'prop-types';
 
 const FavoritesContext = createContext(false);
 const FavoriteVehiclesContext = createContext({});
@@ -47,5 +49,8 @@ const FavoritesProvider = ({ children }) => {
   );
 };
 
-export default FavoritesProvider;
+FavoritesProvider.propTypes = {
+  nodeProp: PropTypes.node.isRequired
+}
 
+export default FavoritesProvider;

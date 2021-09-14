@@ -1,3 +1,4 @@
+import React from 'react';
 import { useFavorites } from '../../common/contexts/FavoritesContext';
 import { useMenuModal } from '../../common/contexts/PopupModalContext';
 
@@ -18,9 +19,9 @@ const Header = () => {
       <div className='header__title'>
         {!favoritesPage ? <h2>Vehicle Overview</h2> : <h2>Favorite Vehicles Overview</h2>}
       </div>
-      {width > 631 ?  
+      {width > 631 ?
         <HeaderFunctionality />
-        : 
+        :
         <HamburgerButton toggleMenuModal={toggleMenuModal} menuModal={menuModal} />
       }
       {menuModal && <MenuModal toggleMenuModal={toggleMenuModal} />}
