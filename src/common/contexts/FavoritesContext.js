@@ -50,7 +50,7 @@ const FavoritesProvider = ({ children }) => {
 };
 
 FavoritesProvider.propTypes = {
-  nodeProp: PropTypes.node.isRequired
+  children: PropTypes.element.isRequired
 }
 
 export default FavoritesProvider;

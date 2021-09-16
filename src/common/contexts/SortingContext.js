@@ -85,7 +85,7 @@ const SortingProvider = ({ children }) => {
 };
 
 SortingProvider.propTypes = {
-  nodeProp: PropTypes.node.isRequired
+  children: PropTypes.element.isRequired
 }
 
 export default SortingProvider;

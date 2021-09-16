@@ -58,7 +58,7 @@ const VehiclesProvider = ({ children }) => {
 };
 
 VehiclesProvider.propTypes = {
-  nodeProp: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired
 }
 
 export default VehiclesProvider;

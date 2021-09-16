@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { useFavoriteVehicles } from "../../common/contexts/FavoritesContext";
 import { usePopupModal } from "../../common/contexts/PopupModalContext";
 import { useSortingStyle } from "../../common/contexts/SortingContext";
@@ -33,5 +34,17 @@ const VehicleListItem = ({ vehicle }) => {
     </li>
   );
 };
+
+VehicleListItem.propTypes = {
+  vehicle: PropTypes.shape({
+    seating: PropTypes.number,
+    vehicleBrand: PropTypes.string,
+    vehicleDrive: PropTypes.string,
+    vehicleModel: PropTypes.string,
+    vehiclePower: PropTypes.number,
+    vehiclePrice: PropTypes.number,
+    yearOfManufacture: PropTypes.number
+  })
+}
 
 export default VehicleListItem;

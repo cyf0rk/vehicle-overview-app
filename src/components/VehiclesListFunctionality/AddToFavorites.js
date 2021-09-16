@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import './AddToFavorites.scss';
 
 const AddToFavorites = ({toggleFavoriteHandler}) => {
@@ -8,6 +9,10 @@ const AddToFavorites = ({toggleFavoriteHandler}) => {
             {/* &#9733; */}
         </div>
     )
+}
+
+AddToFavorites.propTypes = {
+  toggleFavoriteHandler: PropTypes.func
 }
 
 export default AddToFavorites;

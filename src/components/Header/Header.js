@@ -1,12 +1,12 @@
 import React from 'react';
 import { useFavorites } from '../../common/contexts/FavoritesContext';
 import { useMenuModal } from '../../common/contexts/PopupModalContext';
+import { useWindowDimensions } from '../../common/hooks/useWindowDimensions';
 
 import HeaderFunctionality from './HeaderFunctionality';
 
 import './Header.scss';
 import MenuModal from './MenuModal';
-import { useWindowDimensions } from '../../common/hooks/useWindowDimensions';
 import HamburgerButton from './HamburgerButton';
 
 const Header = () => {

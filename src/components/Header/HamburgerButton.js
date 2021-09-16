@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import './HamburgerButton.scss';
 
 const HamburgerButton = ({ toggleMenuModal, menuModal }) => {
@@ -12,6 +13,11 @@ const HamburgerButton = ({ toggleMenuModal, menuModal }) => {
             <span></span>
         </a>
     )
+}
+
+HamburgerButton.propTypes = {
+  toggleMenuModal: PropTypes.func,
+  menuModal: PropTypes.bool
 }
 
 export default HamburgerButton;

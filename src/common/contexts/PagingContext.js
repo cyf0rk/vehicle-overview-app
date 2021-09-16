@@ -75,7 +75,7 @@ const PagingProvider = ({ children }) => {
 };
 
 PagingProvider.propTypes = {
-  nodeProp: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired
 }
 
 export default PagingProvider;

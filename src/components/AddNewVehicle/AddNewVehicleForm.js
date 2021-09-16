@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import {
   useFormInput,
   useCreateDataEntry,
@@ -9,6 +10,7 @@ import './AddNewVehicleForm.scss';
 const AddNewVehicleForm = ({ toggleAddingVehicle }) => {
   const changeHandler = useFormInput();
   const addNewVehicleHandler = useCreateDataEntry();
+  const currentYear = new Date().getFullYear();
 
   return (
     <form className='add-new-form' onSubmit={addNewVehicleHandler}>
@@ -32,20 +34,25 @@ const AddNewVehicleForm = ({ toggleAddingVehicle }) => {
           />
         </div>
         <div className='input-field'>
-          <label htmlFor=''>Vehicle price:</label>
+          <label htmlFor=''>Vehicle price ($):</label>
           <input
             required
-            type='text'
+            type='number'
             name='vehiclePrice'
+            placeholder='0'
+            min='0'
             onChange={changeHandler}
           />
         </div>
         <div className='input-field'>
-          <label htmlFor=''>Vehicle power:</label>
+          <label htmlFor=''>Vehicle power (HP):</label>
           <input
             required
-            type='text'
+            type='number'
             name='vehiclePower'
+            placeholder='0'
+            min='0'
+            max='5000'
             onChange={changeHandler}
           />
         </div>
@@ -61,14 +68,24 @@ const AddNewVehicleForm = ({ toggleAddingVehicle }) => {
         <div className='input-field'>
           <label htmlFor=''>Year of manufacture:</label>
           <input
-            type='text'
+            type='number'
             name='yearOfManufacture'
+            placeholder={currentYear + 2}
+            min='1769'
+            max={currentYear + 2}
             onChange={changeHandler}
           />
         </div>
         <div className='input-field'>
           <label htmlFor=''>Seating up to:</label>
-          <input required type='text' name='seating' onChange={changeHandler} />
+          <input required
+            type='number'
+            name='seating'
+            placeholder='1'
+            min='1'
+            max='100'
+            onChange={changeHandler}
+          />
         </div>
       </div>
       <div className='actions'>
@@ -80,5 +97,9 @@ const AddNewVehicleForm = ({ toggleAddingVehicle }) => {
     </form>
   );
 };
+
+AddNewVehicleForm.propTypes = {
+  toggleAddingVehicle: PropTypes.func
+}
 
 export default AddNewVehicleForm;
