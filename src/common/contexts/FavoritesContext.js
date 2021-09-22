@@ -15,32 +15,35 @@ const FavoritesProvider = ({ children }) => {
   const toggleFavoriteHandler = (e, vehicle) => {
     e.stopPropagation();
 
-    const checkFavoriteVehicle = favoriteVehicles.some(
-      (favVehicle) => favVehicle.vehicleModel === vehicle.vehicleModel
-    );
-
-    if (!checkFavoriteVehicle)
+    if (!checkFavoriteVehicle(vehicle))
       addFavoriteVehicle([...favoriteVehicles, vehicle]);
     else {
       addFavoriteVehicle(
         favoriteVehicles.filter(
-          (favVehicle) => favVehicle.vehicleModel !== vehicle.vehicleModel
+          (favVehicle) => favVehicle.id !== vehicle.id
         )
       );
     }
   };
 
+  const checkFavoriteVehicle = (vehicle) => {
+    return favoriteVehicles.some(
+      (favVehicle) => favVehicle.id === vehicle.id
+    );
+  }
+
   return (
     <FavoritesContext.Provider
       value={{
         favoritesPage,
-        toggleFavoritesPage,
+        toggleFavoritesPage
       }}
     >
       <FavoriteVehiclesContext.Provider
         value={{
           favoriteVehicles,
           toggleFavoriteHandler,
+          checkFavoriteVehicle
         }}
       >
         {children}

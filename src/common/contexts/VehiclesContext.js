@@ -22,7 +22,7 @@ const VehiclesProvider = ({ children }) => {
 
   useEffect(() => {
     db.collection('vehicles').onSnapshot((snapshot) =>
-      setVehicle(snapshot.docs.map((doc) => doc.data()))
+      setVehicle(snapshot.docs.map((doc) => new Object({id: doc.id, ...doc.data()})))
     );
   }, []);
 

@@ -9,7 +9,7 @@ import AddToFavorites from "../VehiclesListFunctionality/AddToFavorites";
 import "./VehicleListItem.scss";
 
 const VehicleListItem = ({ vehicle }) => {
-  const { toggleFavoriteHandler } = useFavoriteVehicles();
+  const { toggleFavoriteHandler, checkFavoriteVehicle } = useFavoriteVehicles();
   const { togglePopupHandler } = usePopupModal();
   const { listStyle } = useSortingStyle();
 
@@ -30,6 +30,7 @@ const VehicleListItem = ({ vehicle }) => {
       </p>
       <AddToFavorites
         toggleFavoriteHandler={(e) => toggleFavoriteHandler(e, vehicle)}
+        isFavorite={checkFavoriteVehicle(vehicle)}
       />
     </li>
   );
