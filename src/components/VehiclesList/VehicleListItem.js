@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { PropTypes } from 'prop-types';
 import { useFavoriteVehicles } from "../../common/contexts/FavoritesContext";
 import { usePopupModal } from "../../common/contexts/PopupModalContext";
@@ -12,6 +12,8 @@ const VehicleListItem = ({ vehicle }) => {
   const { toggleFavoriteHandler, checkFavoriteVehicle } = useFavoriteVehicles();
   const { togglePopupHandler } = usePopupModal();
   const { listStyle } = useSortingStyle();
+
+  const memoCheckFavorite = useCallback(checkFavoriteVehicle(vehicle), [vehicle]);
 
   return (
     <li
@@ -30,7 +32,7 @@ const VehicleListItem = ({ vehicle }) => {
       </p>
       <AddToFavorites
         toggleFavoriteHandler={(e) => toggleFavoriteHandler(e, vehicle)}
-        isFavorite={checkFavoriteVehicle(vehicle)}
+        isFavorite={memoCheckFavorite}
       />
     </li>
   );
