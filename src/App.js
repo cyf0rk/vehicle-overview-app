@@ -1,3 +1,4 @@
+import React from 'react';
 import Header from './components/Header/Header';
 import AddNewVehicle from './components/AddNewVehicle/AddNewVehicle';
 import VehiclesList from './components/VehiclesList/VehiclesList';

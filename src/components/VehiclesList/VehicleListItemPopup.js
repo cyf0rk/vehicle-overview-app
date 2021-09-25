@@ -1,3 +1,4 @@
+import React from 'react';
 import { useFavoriteVehicles } from '../../common/contexts/FavoritesContext';
 import { usePopupModal } from '../../common/contexts/PopupModalContext';
 
@@ -6,7 +7,7 @@ import AddToFavorites from '../VehiclesListFunctionality/AddToFavorites';
 import './VehicleListItemPopup.scss';
 
 const VehicleListItemPopup = () => {
-  const { toggleFavoriteHandler } = useFavoriteVehicles();
+  const { toggleFavoriteHandler, checkFavoriteVehicle } = useFavoriteVehicles();
   const { popupRef, popupItem, closePopup, togglePopup } = usePopupModal();
 
   return (
@@ -18,7 +19,8 @@ const VehicleListItemPopup = () => {
       <div className='popup-item__card'>
         <div className='popup-item__card-title'>
           <AddToFavorites
-            toggleFavoriteHandler={() => toggleFavoriteHandler(popupItem)}
+            toggleFavoriteHandler={(e) => toggleFavoriteHandler(e, popupItem)}
+            isFavorite={checkFavoriteVehicle(popupItem)}
           />
           <h2>{popupItem.vehicleBrand}</h2>
           <a className="close-button" onClick={() => togglePopup(false)}>&#120;</a>

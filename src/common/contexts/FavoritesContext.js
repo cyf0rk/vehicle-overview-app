@@ -1,4 +1,6 @@
+import React from 'react';
 import { createContext, useContext, useState } from "react";
+import PropTypes from 'prop-types';
 
 const FavoritesContext = createContext(false);
 const FavoriteVehiclesContext = createContext({});
@@ -13,32 +15,35 @@ const FavoritesProvider = ({ children }) => {
   const toggleFavoriteHandler = (e, vehicle) => {
     e.stopPropagation();
 
-    const checkFavoriteVehicle = favoriteVehicles.some(
-      (favVehicle) => favVehicle.vehicleModel === vehicle.vehicleModel
-    );
-
-    if (!checkFavoriteVehicle)
+    if (!checkFavoriteVehicle(vehicle))
       addFavoriteVehicle([...favoriteVehicles, vehicle]);
     else {
       addFavoriteVehicle(
         favoriteVehicles.filter(
-          (favVehicle) => favVehicle.vehicleModel !== vehicle.vehicleModel
+          (favVehicle) => favVehicle.id !== vehicle.id
         )
       );
     }
   };
 
+  const checkFavoriteVehicle = (vehicle) => {
+    return favoriteVehicles.some(
+      (favVehicle) => favVehicle.id === vehicle.id
+    );
+  }
+
   return (
     <FavoritesContext.Provider
       value={{
         favoritesPage,
-        toggleFavoritesPage,
+        toggleFavoritesPage
       }}
     >
       <FavoriteVehiclesContext.Provider
         value={{
           favoriteVehicles,
           toggleFavoriteHandler,
+          checkFavoriteVehicle
         }}
       >
         {children}
@@ -47,5 +52,8 @@ const FavoritesProvider = ({ children }) => {
   );
 };
 
-export default FavoritesProvider;
+FavoritesProvider.propTypes = {
+  children: PropTypes.element.isRequired
+}
 
+export default FavoritesProvider;

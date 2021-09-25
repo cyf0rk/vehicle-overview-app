@@ -1,5 +1,8 @@
+import React from 'react';
 import { useEffect, useState, createContext, useContext } from 'react';
 import { db } from '../../services/firebase';
+import PropTypes from 'prop-types';
+
 import FavoritesProvider from './FavoritesContext';
 import PagingProvider from './PagingContext';
 import PopupModalProvider from './PopupModalContext';
@@ -19,7 +22,7 @@ const VehiclesProvider = ({ children }) => {
 
   useEffect(() => {
     db.collection('vehicles').onSnapshot((snapshot) =>
-      setVehicle(snapshot.docs.map((doc) => doc.data()))
+      setVehicle(snapshot.docs.map((doc) => new Object({id: doc.id, ...doc.data()})))
     );
   }, []);
 
@@ -53,5 +56,9 @@ const VehiclesProvider = ({ children }) => {
     </DataContext.Provider>
   );
 };
+
+VehiclesProvider.propTypes = {
+  children: PropTypes.node.isRequired
+}
 
 export default VehiclesProvider;

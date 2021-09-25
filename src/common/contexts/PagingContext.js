@@ -1,7 +1,9 @@
+import React, { useEffect } from 'react';
 import { useState, createContext, useContext } from "react";
 import { useData } from "./VehiclesContext";
 import { useSorting } from "./SortingContext";
 import { useFavorites, useFavoriteVehicles } from "./FavoritesContext";
+import PropTypes from 'prop-types';
 
 const CurrentPageListContext = createContext({});
 const CurrentPageContext = createContext(1);
@@ -22,7 +24,7 @@ const PagingProvider = ({ children }) => {
   const [currentPage, updateCurrentPage] = useState(1);
   const [searchedTerm, changeSearchedTerm] = useState("");
 
-  const vehiclesList = favoritesPage ? favoriteVehicles : vehicles;
+  const vehiclesList = !favoritesPage ? vehicles : favoriteVehicles;
 
   const nextPageHandler = () => {
     if (currentPage < numberOfPages) updateCurrentPage(currentPage + 1);
@@ -57,6 +59,10 @@ const PagingProvider = ({ children }) => {
     changeSearchedTerm(e.target.value);
   };
 
+  useEffect(() => {
+    updateCurrentPage(1);
+  }, [favoritesPage])
+
   return (
     <CurrentPageListContext.Provider value={currentPageList}>
       <CurrentPageContext.Provider value={currentPage}>
@@ -71,5 +77,9 @@ const PagingProvider = ({ children }) => {
     </CurrentPageListContext.Provider>
   );
 };
+
+PagingProvider.propTypes = {
+  children: PropTypes.node.isRequired
+}
 
 export default PagingProvider;

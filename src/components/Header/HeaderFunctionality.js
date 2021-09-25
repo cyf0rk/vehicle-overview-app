@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSearchTerm } from '../../common/contexts/PagingContext';
 import { useFavorites } from '../../common/contexts/FavoritesContext';
 import { useMenuModal } from '../../common/contexts/PopupModalContext';

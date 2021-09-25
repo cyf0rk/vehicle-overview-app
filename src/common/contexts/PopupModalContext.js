@@ -1,4 +1,6 @@
+import React from 'react';
 import { createContext, useContext, useRef, useState } from "react";
+import PropTypes from 'prop-types';
 
 const PopupModalContext = createContext(false);
 const MenuModalContext = createContext(false);
@@ -39,5 +41,9 @@ const PopupModalProvider = ({ children }) => {
     </PopupModalContext.Provider>
   );
 };
+
+PopupModalProvider.propTypes = {
+  children: PropTypes.node.isRequired
+}
 
 export default PopupModalProvider;
