@@ -2,30 +2,24 @@
 @import '../../styles/colors.scss';
 
 .add-to-fav {
-    position: absolute;
-    left: 7%;
-    top: 7%;
-    display: inline-block;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    box-shadow: 1px 1px 4px rgba($color: #000000, $alpha: 0.4);
-    background-color: $white;
+  display: grid;
+  place-items: center;
+  color: $gold;
 
-    @media screen and (max-width: 1160px) {
-        left: 4%;
-        top: 6%;
+  @media screen and (max-width: 1160px) {
+  }
+
+  .add-fav-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bolder;
+    cursor: pointer;
+    user-select: none;
+
+    .star-icon {
+      transform: scale(1.7);
     }
-
-    .add-fav-button {
-        font-size: 1.8rem;
-        font-weight: bolder;
-        color: $gold;
-        cursor: pointer;
-        user-select: none;
-    }
-}
-
-.active {
-  color: #000;
+  }
 }

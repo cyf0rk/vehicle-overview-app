@@ -15,18 +15,20 @@
 
   .vehicles-list__list {
     list-style: none;
-    display: block;
-    margin: 0 auto;
+    display: grid;
+    margin: 10px auto;
     max-width: 1200px;
     width: 100%;
     padding-left: 0;
   }
 
   .ul-grid {
-    flex-direction: row;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 17px 17px;
   }
 
   .ul-list {
-    flex-direction: column;
+    grid-template-columns: auto;
+    grid-gap: 14px 0;
   }
 }
