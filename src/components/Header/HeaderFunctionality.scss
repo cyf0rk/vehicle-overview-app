@@ -33,11 +33,24 @@
     input {
       font-size: inherit;
       border-radius: 2px;
+      height: 30px;
+      width: 170px;
+      transition: height 0.1s, width 0.2s;
+
+      &:focus-visible {
+        height: 34px;
+        width: 220px;
+        transition: height 0.2s, width 0.2s;
+      }
     }
 
     .favorites-btn {
       @include button($gold);
       margin: 0 20px;
       text-decoration: none;
+
+      &:hover {
+        background-color: $light-gold;
+      }
     }
 }

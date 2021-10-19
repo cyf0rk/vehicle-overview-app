@@ -11,7 +11,7 @@ export const useSortingStyle = () => useContext(SortingStyleContext);
 
 const SortingProvider = ({ children }) => {
   const [sorting, changeSorting] = useState('name');
-  const [listStyle, changeListStyle] = useState('list');
+  const [listStyle, changeListStyle] = useState('grid');
   const { width } = useWindowDimensions();
 
   useEffect(() => {

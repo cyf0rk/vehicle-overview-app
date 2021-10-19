@@ -15,7 +15,7 @@ const VehiclesListPaging = () => {
       <a className='previous' onClick={previousPageHandler}>
         &#8701;
       </a>
-      <a className='currentPage'>{currentPage}</a>
+      <p className='currentPage'>{currentPage}</p>
       <a className='next' onClick={nextPageHandler}>
         &#8702;
       </a>
