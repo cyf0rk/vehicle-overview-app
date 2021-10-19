@@ -21,6 +21,7 @@
     flex-direction: column;
     height: 65%;
     width: 40%;
+    background-color: $light-brown;
 
     @media screen and (max-width: 860px) {
       width: 70%;
@@ -31,10 +32,8 @@
       display: flex;
       flex: 1;
       border-radius: 12px 12px 0 0;
-      background-color: #fff;
       background-image: url(../../assets/car-placeholder.png);
       background-position: center;
-      background-size: cover;
       align-items: center;
       justify-content: center;
       font-size: 1.3rem;
@@ -45,6 +44,26 @@
         right: 5%;
         font-size: 1.7rem;
         cursor: pointer;
+
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+
+      .add-to-fav {
+        position: absolute;
+        top: 25px;
+        left: 35px;
+
+        .add-fav-button {
+          .star-icon {
+            transform: scale(1.8);
+
+            &:hover {
+              transform: scale(2);
+            }
+          }
+        }
       }
     }
 

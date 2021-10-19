@@ -16,6 +16,10 @@
     .add-btn {
       all: unset;
       @include button($brown);
+
+      &:hover {
+        background-color: $light-brown;
+      }
     }
   }
 }

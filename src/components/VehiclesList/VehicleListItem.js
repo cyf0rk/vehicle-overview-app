@@ -20,21 +20,23 @@ const VehicleListItem = ({ vehicle }) => {
       className={"vehicles-list__item list-item-" + listStyle}
       onClick={() => togglePopupHandler(vehicle)}
     >
-      <AddToFavorites
-        toggleFavoriteHandler={(e) => toggleFavoriteHandler(e, vehicle)}
-        isFavorite={memoCheckFavorite}
-      />
-      <div className="item-info">
-        <h3>{vehicle.vehicleBrand}</h3>
-        <p>
-          <span>{vehicle.vehicleModel}</span>
-        </p>
-        <p>
-          <span>${vehicle.vehiclePrice}</span>
-        </p>
-        <p>
-          <span>{vehicle.yearOfManufacture}.</span>
-        </p>
+      <div className="list-item-container">
+        <AddToFavorites
+          toggleFavoriteHandler={(e) => toggleFavoriteHandler(e, vehicle)}
+          isFavorite={memoCheckFavorite}
+        />
+        <div className="item-info">
+          <h3>{vehicle.vehicleBrand}</h3>
+          <p>
+            <span>{vehicle.vehicleModel}</span>
+          </p>
+          <p>
+            <span>${vehicle.vehiclePrice}</span>
+          </p>
+          <p>
+            <span>{vehicle.yearOfManufacture}.</span>
+          </p>
+        </div>
       </div>
     </li>
   );
