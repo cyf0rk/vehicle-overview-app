@@ -16,7 +16,7 @@
   .vehicles-list__list {
     list-style: none;
     display: grid;
-    margin: 10px auto;
+    margin: 35px auto;
     max-width: 1200px;
     width: 100%;
     padding-left: 0;
@@ -25,6 +25,18 @@
   .ul-grid {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 17px 17px;
+
+    @media screen and (max-width: 1160px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media screen and (max-width: 890px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (max-width: 620px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .ul-list {

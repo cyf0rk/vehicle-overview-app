@@ -27,7 +27,7 @@ const PagingProvider = ({ children }) => {
   const vehiclesList = !favoritesPage ? vehicles : favoriteVehicles;
 
   const nextPageHandler = () => {
-    if (currentPage < numberOfPages) updateCurrentPage(currentPage + 1);
+    if (currentPage < numberOfPages()) updateCurrentPage(currentPage + 1);
   };
 
   const previousPageHandler = () => {
@@ -44,12 +44,11 @@ const PagingProvider = ({ children }) => {
     );
   };
 
-  const getNumberOfPages = () =>
+  const numberOfPages = () =>
     Math.ceil(searchedDataHandler().length / numberPerPage);
 
   const listSortedByName = sortList(searchedDataHandler());
   const numberPerPage = 8;
-  const numberOfPages = getNumberOfPages();
   const currentPageList = listSortedByName.slice(
     (currentPage - 1) * numberPerPage,
     numberPerPage * currentPage
@@ -65,10 +64,10 @@ const PagingProvider = ({ children }) => {
 
   return (
     <CurrentPageListContext.Provider value={currentPageList}>
-      <CurrentPageContext.Provider value={currentPage}>
+      <CurrentPageContext.Provider value={{ currentPage, updateCurrentPage, numberOfPages }}>
         <SearchTermContext.Provider value={{ searchedTerm, searchHandler }}>
           <NavigatePageContext.Provider
-            value={{nextPageHandler, previousPageHandler}}
+            value={{ nextPageHandler, previousPageHandler }}
           >
             {children}
           </NavigatePageContext.Provider>

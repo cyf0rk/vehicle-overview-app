@@ -24,7 +24,7 @@ const HeaderFunctionality = () => {
             toggleFavoritesPage(true);
             toggleMenuModal(false);
           }}>
-            My favourites
+            My favorites
           </a>
         ): (
           <a className='favorites-btn' onClick={() => {
