@@ -6,12 +6,12 @@ import { useFavorites, useFavoriteVehicles } from "./FavoritesContext";
 import PropTypes from 'prop-types';
 
 const CurrentPageListContext = createContext({});
-const CurrentPageContext = createContext(1);
+const PagesContext = createContext(1);
 const NavigatePageContext = createContext(null);
 const SearchTermContext = createContext("");
 
 export const useCurrentPageList = () => useContext(CurrentPageListContext);
-export const useCurrentPage = () => useContext(CurrentPageContext);
+export const usePages = () => useContext(PagesContext);
 export const useNavigatePage = () => useContext(NavigatePageContext);
 export const useSearchTerm = () => useContext(SearchTermContext);
 
@@ -25,14 +25,6 @@ const PagingProvider = ({ children }) => {
   const [searchedTerm, changeSearchedTerm] = useState("");
 
   const vehiclesList = !favoritesPage ? vehicles : favoriteVehicles;
-
-  const nextPageHandler = () => {
-    if (currentPage < numberOfPages()) updateCurrentPage(currentPage + 1);
-  };
-
-  const previousPageHandler = () => {
-    currentPage > 1 && updateCurrentPage(currentPage - 1);
-  };
 
   const searchedDataHandler = () => {
     return vehiclesList.filter(
@@ -63,16 +55,16 @@ const PagingProvider = ({ children }) => {
   }, [favoritesPage])
 
   return (
-    <CurrentPageListContext.Provider value={currentPageList}>
-      <CurrentPageContext.Provider value={{ currentPage, updateCurrentPage, numberOfPages }}>
+    <CurrentPageListContext.Provider value={ currentPageList }>
+      <PagesContext.Provider value={ numberOfPages }>
         <SearchTermContext.Provider value={{ searchedTerm, searchHandler }}>
           <NavigatePageContext.Provider
-            value={{ nextPageHandler, previousPageHandler }}
+            value={ updateCurrentPage }
           >
             {children}
           </NavigatePageContext.Provider>
         </SearchTermContext.Provider>
-      </CurrentPageContext.Provider>
+      </PagesContext.Provider>
     </CurrentPageListContext.Provider>
   );
 };

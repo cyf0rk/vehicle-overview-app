@@ -1,7 +1,8 @@
 import React from 'react';
+import ReactPaginate from 'react-paginate';
 import {
   useNavigatePage,
-  useCurrentPage,
+  usePages,
 } from '../../common/contexts/PagingContext';
 
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
@@ -10,21 +11,24 @@ import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import './VehiclesListPaging.scss';
 
 const VehiclesListPaging = () => {
-  const { currentPage, updateCurrentPage,numberOfPages } = useCurrentPage();
-  const { nextPageHandler, previousPageHandler } = useNavigatePage();
-  const n = 1;
+  const numberOfPages = usePages();
+  const updateCurrentPage = useNavigatePage();
 
   return (
     <div className='vehicles-list__paging'>
-      <a className='previous' onClick={previousPageHandler}>
-        <KeyboardArrowLeftIcon />
-      </a>
-      {[...Array(numberOfPages())].map((e, i) => (
-        <p className={`page-number ${i+1 == currentPage ? 'current-page' : ''}`} onClick={() => updateCurrentPage(i+1)} key={i}>{i + 1}</p>
-      ))}
-      <a className='next' onClick={nextPageHandler}>
-        <KeyboardArrowRightIcon />
-      </a>
+      <ReactPaginate
+        pageCount={numberOfPages()}
+        pageRangeDisplayed={2}
+        marginPagesDisplayed={2}
+        onPageChange={(page) => updateCurrentPage(page.selected+1)}
+        containerClassName="vehicles-list__paging"
+        pageClassName="page-number"
+        pageLinkClassName="page-number__link"
+        activeClassName="current-page"
+        activeLinkClassName="current-page__link"
+        previousLabel={<KeyboardArrowLeftIcon />}
+        nextLabel={<KeyboardArrowRightIcon />}
+      />
     </div>
   );
 };

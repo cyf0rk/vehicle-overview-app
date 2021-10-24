@@ -9,30 +9,66 @@ $paging-font: 1.4rem;
   font-size: $paging-font;
   text-align: end;
   color: $dark-grey;
+  list-style: none;
 
   .page-number {
+    position: relative;
     margin: 0 2px;
-    display: inline;
     width: $paging-font;
     border-radius: 4px;
     text-align: center;
     cursor: pointer;
+    user-select: none;
+
+    .page-number__link {
+
+    }
   }
 
   .current-page {
-    background-color: $dark;
     color: $light-grey;
+
+    .current-page__link {
+      position: relative;
+      z-index: 99;
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      font-size: 3rem;
+      content: "";
+      border-radius: 4px;
+      background-color: #212b3b;
+      animation: paging 0.3s ease-out;
+    }
+
+    @keyframes paging {
+      20% { transform: scale(0.8) }
+      70% { transform: scale(1.3) }
+      100% { transform: scale(1) }
+    }
   }
 
-  a {
-    margin: 0 10px;
-    display: inline-flex;
+  .previous, .next {
+    border-radius: 4px;
     cursor: pointer;
-    user-select: none;
 
     &:hover {
       background-color: $light-grey;
-      border-radius: 4px;
     }
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .disabled {
+    visibility: hidden;
   }
 }
