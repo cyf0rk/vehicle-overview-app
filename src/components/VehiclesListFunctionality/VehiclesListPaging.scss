@@ -30,7 +30,7 @@ $paging-font: 1.4rem;
 
     .current-page__link {
       position: relative;
-      z-index: 99;
+      z-index: 1;
     }
 
     &::before {

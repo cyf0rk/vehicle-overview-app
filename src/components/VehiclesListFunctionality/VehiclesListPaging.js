@@ -16,19 +16,23 @@ const VehiclesListPaging = () => {
 
   return (
     <div className='vehicles-list__paging'>
-      <ReactPaginate
-        pageCount={numberOfPages()}
-        pageRangeDisplayed={2}
-        marginPagesDisplayed={2}
-        onPageChange={(page) => updateCurrentPage(page.selected+1)}
-        containerClassName="vehicles-list__paging"
-        pageClassName="page-number"
-        pageLinkClassName="page-number__link"
-        activeClassName="current-page"
-        activeLinkClassName="current-page__link"
-        previousLabel={<KeyboardArrowLeftIcon />}
-        nextLabel={<KeyboardArrowRightIcon />}
-      />
+      {
+        numberOfPages() > 0 ? (
+          <ReactPaginate
+            pageCount={numberOfPages()}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={2}
+            onPageChange={(page) => updateCurrentPage(page.selected+1)}
+            containerClassName="vehicles-list__paging"
+            pageClassName="page-number"
+            pageLinkClassName="page-number__link"
+            activeClassName="current-page"
+            activeLinkClassName="current-page__link"
+            previousLabel={<KeyboardArrowLeftIcon />}
+            nextLabel={<KeyboardArrowRightIcon />}
+          />
+        ) : ('')
+      }
     </div>
   );
 };
