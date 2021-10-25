@@ -22,26 +22,20 @@
       .favorites-btn {
         margin-bottom: 30px;
         font-size: 1.3rem;
-        width: 180px;
+        width: 280px;
       }
 
       input {
-        height: 35px;
+        height: 45px;
       }
     }
 
     input {
+      padding: 12px;
       font-size: inherit;
       border-radius: 2px;
       height: 30px;
       width: 170px;
-      transition: height 0.1s, width 0.2s;
-
-      &:focus-visible {
-        height: 34px;
-        width: 220px;
-        transition: height 0.2s, width 0.2s;
-      }
     }
 
     .favorites-btn {

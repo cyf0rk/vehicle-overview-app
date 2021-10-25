@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <div className='header'>
       <div className='header__title'>
-        {!favoritesPage ? <h2>Vehicle Overview</h2> : <h2>Favorite Vehicles Overview</h2>}
+        {!favoritesPage ? <h2>All Vehicles</h2> : <h2>Favorite Vehicles</h2>}
       </div>
       {width > 631 ?
         <HeaderFunctionality />

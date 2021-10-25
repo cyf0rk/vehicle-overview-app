@@ -1,15 +1,74 @@
+@import '../../styles/colors';
+$paging-font: 1.4rem;
+
 .vehicles-list__paging {
-  font-size: 2rem;
-  text-align: end;
+  display: flex;
   padding: 10px 15%;
+  justify-content: center;
+  align-items: center;
+  font-size: $paging-font;
+  text-align: end;
+  color: $dark-grey;
+  list-style: none;
 
-  p {
-    display: inline;
-  }
-
-  a {
-    margin: 0 10px;
+  .page-number {
+    position: relative;
+    margin: 0 2px;
+    width: $paging-font;
+    border-radius: 4px;
+    text-align: center;
     cursor: pointer;
     user-select: none;
+
+    .page-number__link {
+
+    }
+  }
+
+  .current-page {
+    color: $light-grey;
+
+    .current-page__link {
+      position: relative;
+      z-index: 99;
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      font-size: 3rem;
+      content: "";
+      border-radius: 4px;
+      background-color: #212b3b;
+      animation: paging 0.3s ease-out;
+    }
+
+    @keyframes paging {
+      20% { transform: scale(0.8) }
+      70% { transform: scale(1.3) }
+      100% { transform: scale(1) }
+    }
+  }
+
+  .previous, .next {
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $light-grey;
+    }
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .disabled {
+    visibility: hidden;
   }
 }
